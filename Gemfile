@@ -52,3 +52,11 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :development do
+  gem 'rebocop', require: false
+end
+
+group :production do
+  gem 'rails_12factor' #静的アセットファイルやログの保存先をHeroku用に微調整してくれるGemです。
+end
