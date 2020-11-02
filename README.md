@@ -36,7 +36,7 @@ Things you may want to cover:
 | email              | string | null: false |
 | encrypted_password | string | null: false |
 | nickname           | string | null: false |
-| birthday           | string | null: false |
+| birthday           | date   | null: false |
 
 ### Association
 
@@ -60,11 +60,11 @@ Things you may want to cover:
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| item             | string     | null: false                    |
+| name             | string     | null: false                    |
 | description      | text       | null: false                    |
 | category_id      | integer    | null: false                    |
 | status_id        | integer    | null: false                    |
-| price            | string     | null: false                    |
+| price            | integer    | null: false                    |
 | delivery_cost_id | integer    | null: false                    |
 | shipping_area_id | integer    | null: false                    |
 | how_many_days_id | integer    | null: false                    |
@@ -82,11 +82,11 @@ Things you may want to cover:
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| postal_code_id | integer    | null: false                    |
+| postal_code    | string     | null: false                    |
 | prefecture_id  | integer    | null: false                    |
 | city           | string     | null: false                    |
 | banchi         | string     | null: false                    |
-| building_name  | string     | null: false                    |
+| building_name  | string     |                                |
 | tel            | string     | null: false                    |
 | record         | references | null: false, foreign_key: true |
 
