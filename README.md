@@ -27,13 +27,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| name     | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
-| nickname | string | null: false |
-| birthday | string | null: false |
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| lastname           | string | null: false |
+| firstname          | string | null: false |
+| furigana_lastname  | string | null: false |
+| furigana_firstname | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| nickname           | string | null: false |
+| birthday           | string | null: false |
 
 ### Association
 
@@ -44,7 +47,6 @@ Things you may want to cover:
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| purchased_time | datetime   | null: false                    |
 | user           | references | null: false, foreign_key: true |
 | product        | references | null: false, foreign_key: true |
 
@@ -56,17 +58,20 @@ Things you may want to cover:
 
 ## products テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| item          | string     | null: false                    |
-| image         | string     | null: false                    |
-| category      | string     | null: false                    |
-| status        | string     | null: false                    |
-| price         | string     | null: false                    |
-| delivery_cost | string     | null: false                    |
-| shipping_area | string     | null: false                    |
-| how_many_days | string     | null: false                    |
-| record        | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| item             | string     | null: false                    |
+| description      | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| status_id        | integer    | null: false                    |
+| price            | string     | null: false                    |
+| delivery_cost_id | integer    | null: false                    |
+| shipping_area_id | integer    | null: false                    |
+| how_many_days_id | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
+
+* カラムをcategory_idにする理由は、カテゴリのidをproductsテーブルに保存するためです。
+そうすることで、idに紐付いているジャンルの情報を取得できます。
 
 ### Association
 
@@ -75,15 +80,15 @@ Things you may want to cover:
 
 ## deliverys テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| postal_code   | string     |                                |
-| prefecture    | string     |                                |
-| city          | string     |                                |
-| banchi        | string     |                                |
-| building_name | string     |                                |
-| tel           | string     |                                |
-| record        | references | null: false, foreign_key: true |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| postal_code_id | integer    | null: false                    |
+| prefecture_id  | integer    | null: false                    |
+| city           | string     | null: false                    |
+| banchi         | string     | null: false                    |
+| building_name  | string     | null: false                    |
+| tel            | string     | null: false                    |
+| record         | references | null: false, foreign_key: true |
 
 ### Association
 
