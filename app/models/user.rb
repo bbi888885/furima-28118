@@ -17,4 +17,26 @@ class User < ApplicationRecord
 
   validates :birthday, presence: true
 
+  validates :lastname, presence: true,
+                       format: {
+                       with: /\A[ぁ-んァ-ン一-龥]/,
+                       message: "全角カタカナのみで入力して下さい"
+                       }
+  validates :firstname, presence: true,
+                        format: {
+                        with: /\A[ぁ-んァ-ン一-龥]/,
+                        message: "全角カタカナのみで入力して下さい"
+                        }
+
+  validates :furigana_lastname, presence: true,
+                                format: {
+                                with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
+                                message: "全角カタカナのみで入力して下さい"
+                                }
+  validates :furigana_firstname, presence: true,
+                                 format: {
+                                 with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
+                                 message: "全角カタカナのみで入力して下さい"
+                                 }
+
 end
