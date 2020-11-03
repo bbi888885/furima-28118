@@ -15,4 +15,6 @@ class User < ApplicationRecord
                        presence: true, length: { minimum: 6 },
                        confirmation: true
 
+  validates :birthday, presence: true
+
 end
