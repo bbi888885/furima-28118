@@ -60,5 +60,3 @@ end
 group :production do
   gem 'rails_12factor' #静的アセットファイルやログの保存先をHeroku用に微調整してくれるGemです。
 end
-
-gem 'devise'
