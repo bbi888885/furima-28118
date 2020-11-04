@@ -24,6 +24,13 @@ describe User do
         expect(@user.errors.full_messages).to include("Email is invalid", "Email is invalid")
       end
 
+      it 'パスワードは数字のみを入力する場合登録できない' do
+        @user.password = '111111'
+        @user.password_confirmation = '111111'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
+
       it 'パスワードは確認用を含めて2回入力すること' do
         @user.password_confirmation = ""
         @user.valid?
