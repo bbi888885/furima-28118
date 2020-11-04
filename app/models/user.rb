@@ -4,35 +4,26 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname, presence: true
-
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, uniqueness: true, 
-                    length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
-                    
-  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
-  validates :password, format: { with: VALID_PASSWORD_REGEX },
-                       presence: true, length: { minimum: 6 },
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+  VALID_PASSWORD_REGEX = /\A[a-z\d]{6,100}+\z/i.freeze
+  
+  with_options presence: true do
+    validates :nickname
+    validates :email, uniqueness: true,
+                    length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX } 
+    validates :password, format: { with: VALID_PASSWORD_REGEX },
+                       length: { minimum: 6 },
                        confirmation: true
+    validates :birthday
 
-  validates :birthday, presence: true
+    with_options format: { with: /\A[ぁ-んァ-ン一-龥]/ } do
+      validates :lastname
+      validates :firstname
+    end
 
-  validates :lastname, presence: true,
-                       format: {
-                       with: /\A[ぁ-んァ-ン一-龥]/,
-                       }
-  validates :firstname, presence: true,
-                        format: {
-                        with: /\A[ぁ-んァ-ン一-龥]/,
-                        }
-
-  validates :furigana_lastname, presence: true,
-                                format: {
-                                with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
-                                }
-  validates :furigana_firstname, presence: true,
-                                 format: {
-                                 with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
-                                 }
-
+    with_options format: { with: /\A[\p{katakana} ー－&&[^ -~｡-ﾟ]]+\z/ } do
+      validates :furigana_lastname
+      validates :furigana_firstname
+    end
+  end
 end
