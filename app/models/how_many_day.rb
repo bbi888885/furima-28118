@@ -1,0 +1,2 @@
+class HowManyDay < ApplicationRecord
+end
