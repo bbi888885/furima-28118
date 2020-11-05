@@ -7,4 +7,9 @@ class Product < ApplicationRecord
   validates :status_id, numericality: { other_than: 1 }
   validates :delivery_cost_id, numericality: { other_than: 1 }
   validates :shipping_area_id, numericality: { other_than: 1 }
+  validates :how_many_days_id, numericality: { other_than: 1 }
+
+
+
+  
 end
