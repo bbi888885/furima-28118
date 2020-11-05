@@ -26,4 +26,6 @@ class User < ApplicationRecord
       validates :furigana_firstname
     end
   end
+
+  has_many :products
 end
