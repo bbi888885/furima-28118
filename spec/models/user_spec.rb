@@ -18,18 +18,28 @@ describe User do
     end
 
     context '新規登録がうまくいかないとき' do
-      it '全角（漢字・ひらがな・カタカナ）での入力が必須であること' do
+      it '姓に全角（漢字・ひらがな・カタカナ）での入力が必須であること' do
         @user.lastname = "aaa"
-        @user.firstname = "aaa"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Lastname is invalid", "Firstname is invalid")
+        expect(@user.errors.full_messages).to include("Lastname is invalid")
       end
 
-      it 'フリガナは、全角（カタカナ）での入力が必須であること' do
+      it '名に全角（漢字・ひらがな・カタカナ）での入力が必須であること' do
+        @user.firstname = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Firstname is invalid")
+      end
+
+      it '姓にフリガナは、全角（カタカナ）での入力が必須であること' do
         @user.furigana_lastname = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Furigana lastname is invalid")
+      end
+
+      it '名にフリガナは、全角（カタカナ）での入力が必須であること' do
         @user.furigana_firstname = "aaa"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Furigana lastname is invalid", "Furigana firstname is invalid")
+        expect(@user.errors.full_messages).to include("Furigana firstname is invalid")
       end
 
       it 'メールアドレスは@を含む必要があること' do
