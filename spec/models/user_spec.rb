@@ -18,6 +18,20 @@ describe User do
     end
 
     context '新規登録がうまくいかないとき' do
+      it '全角（漢字・ひらがな・カタカナ）での入力が必須であること' do
+        @user.lastname = "aaa"
+        @user.firstname = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Lastname is invalid", "Firstname is invalid")
+      end
+
+      it 'フリガナは、全角（カタカナ）での入力が必須であること' do
+        @user.furigana_lastname = "aaa"
+        @user.furigana_firstname = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Furigana lastname is invalid", "Furigana firstname is invalid")
+      end
+
       it 'メールアドレスは@を含む必要があること' do
         @user = FactoryBot.build(:user, email: 'kengmail.com')
         @user.valid?
