@@ -19,44 +19,44 @@ describe User do
 
     context '新規登録がうまくいかないとき' do
       it '姓に全角（漢字・ひらがな・カタカナ）での入力が必須であること' do
-        @user.lastname = "aaa"
+        @user.lastname = 'aaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Lastname is invalid")
+        expect(@user.errors.full_messages).to include('Lastname is invalid')
       end
 
       it '名に全角（漢字・ひらがな・カタカナ）での入力が必須であること' do
-        @user.firstname = "aaa"
+        @user.firstname = 'aaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Firstname is invalid")
+        expect(@user.errors.full_messages).to include('Firstname is invalid')
       end
 
       it '姓にフリガナは、全角（カタカナ）での入力が必須であること' do
-        @user.furigana_lastname = "aaa"
+        @user.furigana_lastname = 'aaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Furigana lastname is invalid")
+        expect(@user.errors.full_messages).to include('Furigana lastname is invalid')
       end
 
       it '名にフリガナは、全角（カタカナ）での入力が必須であること' do
-        @user.furigana_firstname = "aaa"
+        @user.furigana_firstname = 'aaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Furigana firstname is invalid")
+        expect(@user.errors.full_messages).to include('Furigana firstname is invalid')
       end
 
       it 'メールアドレスは@を含む必要があること' do
         @user = FactoryBot.build(:user, email: 'kengmail.com')
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid", "Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid', 'Email is invalid')
       end
 
       it 'パスワードは数字のみを入力する場合登録できない' do
         @user.password = '111111'
         @user.password_confirmation = '111111'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
 
       it 'パスワードは確認用を含めて2回入力すること' do
-        @user.password_confirmation = ""
+        @user.password_confirmation = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
