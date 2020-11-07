@@ -86,19 +86,6 @@
     </div>
     <%# /配送について %>
 
-    <%# 利益計算用のJS準備 %>
-    <script>
-      $(function(){
-        var price = document.getElementById("item-price").value;
-        var commission = price * 0.1;
-        var profit = price - commission;
-        var resultCommission = getElementById("add-tax-rice").value;
-        var resultProfit = getElementById("profit").value;
-        resultCommission.value = commission;
-        resultProfit.value = profit;
-      });
-    </script>
-    <%# /利益計算用のJS準備 %>
 
     <%# 販売価格 %>
     <div class="sell-price">
