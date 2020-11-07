@@ -58,11 +58,17 @@ describe Product do
         @product.valid?
         expect(@product.errors.full_messages).to include("Price is invalid")
       end
-      it "価格の範囲が、¥300~¥9,999,999の間であること" do
+      it "価格が299円以下の場合は登録できない" do
         @product.price = 99
         @product.valid?
         expect(@product.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
+      it "価格が10,000,000以上の場合は登録できない" do
+        @product.price = 10000000
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
+      
       it "販売価格は半角数字のみ保存可能であること" do
         @product.price = "aaa"
         @product.valid?
