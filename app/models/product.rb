@@ -7,10 +7,9 @@ class Product < ApplicationRecord
   belongs_to :shipping_area
   belongs_to :how_many_day
   belongs_to :status
-  
 
-  with_options numericality: { other_than: 1, message: "can not be blank" } do
-    validates :category_id 
+  with_options numericality: { other_than: 1, message: 'can not be blank' } do
+    validates :category_id
     validates :status_id
     validates :delivery_cost_id
     validates :shipping_area_id
@@ -19,7 +18,7 @@ class Product < ApplicationRecord
   validates :price, format: { with: /\A[0-9]+\z/ },
                     numericality: {
                       greater_than_or_equal_to: 300,
-                      less_than_or_equal_to: 9999999
+                      less_than_or_equal_to: 9_999_999
                     }
   with_options presence: true do
     validates :image

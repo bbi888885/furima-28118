@@ -4,14 +4,14 @@ FactoryBot.define do
     description          { 'ラインがきれいに見えるタートルネック' }
     category_id          { 2 }
     status_id            { 2 }
-    price                { 345454 }
+    price                { 345_454 }
     delivery_cost_id     { 3 }
     shipping_area_id     { 3 }
     how_many_days_id     { 3 }
 
-    association :user 
+    association :user
 
-    #テスト用のダミー画像を用意
+    # テスト用のダミー画像を用意
     after(:build) do |item|
       item.image.attach(io: File.open('app/assets/images/camera.png'), filename: 'camera.png')
     end
