@@ -8,7 +8,7 @@ describe Product do
   describe '商品出品' do
     context '商品出品がうまくいくとき' do
       it 'item, description, category_id, status_id, price,
-      delivery_cost_id, shipping_area_id, how_many_days_idとimageが存在すれば登録できる' do
+      delivery_cost_id, shipping_area_id, how_many_day_idとimageが存在すれば登録できる' do
         expect(@product).to be_valid
       end
     end
@@ -49,9 +49,9 @@ describe Product do
         expect(@product.errors.full_messages).to include("Shipping area can not be blank")
       end
       it "発送までの日数についての情報が必須であること" do
-        @product.how_many_days_id = 1
+        @product.how_many_day_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("How many days can not be blank")
+        expect(@product.errors.full_messages).to include("How many day can not be blank")
       end
       it "価格についての情報が必須であること" do
         @product.price = nil
