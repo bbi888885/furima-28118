@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_params, only: [:edit, :show]
+  before_action :move_to_index, except: [:index, :show]
 
   def index
     @products = Product.order('created_at DESC')
@@ -23,7 +24,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def update
@@ -45,5 +46,11 @@ class ProductsController < ApplicationController
 
   def find_params
     @product = Product.find(params[:id])
+  end
+
+  def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
   end
 end
