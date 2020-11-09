@@ -1,7 +1,9 @@
 function calculate() {
   const priceInput = document.getElementById("item-price")
   //入力する時、下記のアクションを発火させる
-  priceInput.addEventListener( "input", function() {
+  priceInput.addEventListener("input", doCalculate);
+  
+  function doCalculate() {
     // 値の取得
     var numData = document.getElementById("item-price").value;
     // 手数料の計算
@@ -14,7 +16,7 @@ function calculate() {
     //HTMLに入力させる
     document.getElementById("add-tax-price").innerHTML = numTax;
     document.getElementById("profit").innerHTML = numProfit;
-  }) 
+    }
 
   function dataFormatPrice(numTax) {
     var data = "";
