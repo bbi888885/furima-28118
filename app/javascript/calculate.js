@@ -1,7 +1,7 @@
 function calculate() {
   const priceInput = document.getElementById("item-price")
   //入力する時、下記のアクションを発火させる
-  priceInput.addEventListener("input", doCalculate);
+  priceInput.addEventListener("keyup", doCalculate);
   
   function doCalculate() {
     // 値の取得
