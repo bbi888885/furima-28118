@@ -24,5 +24,12 @@ class Product < ApplicationRecord
     validates :image
     validates :item
     validates :description
+    validates :category
+    validates :status_id
+    validates :price
+    validates :delivery_cost
+    validates :shipping_area
+    validates :how_many_day
   end
 end
+
