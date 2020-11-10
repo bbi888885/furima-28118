@@ -43,7 +43,8 @@ Things you may want to cover:
 - has_many :records
 - has_many :products
 
-## records テーブル
+## records テーブル 購入記録
+## 「新規登録（ログイン）をしたユーザーは、いくつ商品を購入することができる
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
@@ -56,7 +57,7 @@ Things you may want to cover:
 - has_one :delivery
 - belongs_to: product
 
-## products テーブル
+## products テーブル 商品情報
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
@@ -78,7 +79,7 @@ Things you may want to cover:
 - belongs_to :user
 - has_one :record
 
-## deliverys テーブル
+## deliverys テーブル 購入記録と住所（発送先）
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
