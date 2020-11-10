@@ -80,15 +80,15 @@ Things you may want to cover:
 
 ## deliverys テーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| postal_code    | string     | null: false                    |
-| prefecture_id  | integer    | null: false                    |
-| city           | string     | null: false                    |
-| banchi         | string     | null: false                    |
-| building_name  | string     |                                |
-| tel            | string     | null: false                    |
-| record         | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| postal_code      | string     | null: false                    |
+| shipping_area_id | integer    | null: false                    |
+| city             | string     | null: false                    |
+| banchi           | string     | null: false                    |
+| building_name    | string     |                                |
+| tel              | string     | null: false                    |
+| record           | references | null: false, foreign_key: true |
 
 ### Association
 
