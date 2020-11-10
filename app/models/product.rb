@@ -32,4 +32,3 @@ class Product < ApplicationRecord
     validates :how_many_day
   end
 end
-
