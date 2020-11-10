@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_params, only: [:edit, :show]
-  before_action :move_to_index, except: [:index, :show, :update]
-  #before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show, :update]
 
   def index
     @products = Product.order('created_at DESC')
@@ -50,7 +49,4 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def move_to_index
-    authenticate_user!
-  end
 end
