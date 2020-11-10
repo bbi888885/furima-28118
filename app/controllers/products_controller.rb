@@ -41,6 +41,8 @@ class ProductsController < ApplicationController
     if current_user.id == @product.user_id
       @product.destroy
       redirect_to root_path
+    else
+      redirect_to root_path
     end
   end
 
