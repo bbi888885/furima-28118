@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_params, only: [:edit, :show]
+  before_action :find_params, only: [:edit, :show, :destroy]
   before_action :authenticate_user!, except: [:index, :show, :update]
 
   def index
@@ -34,6 +34,12 @@ class ProductsController < ApplicationController
       redirect_to product_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @product.destroy
+      redirect_to root_path
     end
   end
 
