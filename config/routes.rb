@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :users
   resources :products do
-    resources :record, only: :index
+    resources :delivery, only: [:index, :create]
   end
   
 
