@@ -23,7 +23,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    redirect_to action: :index unless current_user.id == @product.user_id
+    unless current_user.id == @product.user_id
+      redirect_to action: :index 
+    end
   end
 
   def update
