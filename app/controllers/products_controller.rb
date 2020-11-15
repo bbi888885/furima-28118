@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_params, only: [:edit, :show, :destroy]
+  before_action :find_params, only: [:edit, :show, :destroy, :update]
   before_action :authenticate_user!, except: [:index, :show, :update]
 
   def index
