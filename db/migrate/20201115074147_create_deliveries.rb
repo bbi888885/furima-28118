@@ -3,8 +3,8 @@ class CreateDeliveries < ActiveRecord::Migration[6.0]
     create_table :deliveries do |t|
       t.string :postal_code,    default: "",  null: false
       t.integer :prefecture,                  null: false
-      t.string :city,           default: ""
-      t.string :banchi,         default: ""
+      t.string :city,           default: "",  null: false 
+      t.string :banchi,         default: "",  null: false
       t.string :building_name,  default: ""
       t.string :tel,                          null: false
       t.references :record,                   null: false,  foreign_key: true
