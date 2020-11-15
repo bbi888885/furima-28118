@@ -1,8 +1,9 @@
 class RecordsController < ApplicationController
   before_action :set_product, only: [:index, :create]
-
+  before_action :authenticate_user!
 
   def index
+    redirect_to root_path unless current_user.id != @product.user_id
     @delivery_record = DeliveryRecord.new 
   end
 
@@ -10,7 +11,6 @@ class RecordsController < ApplicationController
     @delivery_record = DeliveryRecord.new(record_params)
     if @delivery_record.valid?
       pay_item
-      binding.pry
       @delivery_record.save
       return redirect_to root_path
     else
