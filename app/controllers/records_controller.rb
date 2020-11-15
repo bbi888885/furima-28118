@@ -18,7 +18,7 @@ class RecordsController < ApplicationController
   private
 
   def record_params
-    params.require(:delivery_record).permit(:user.id, :product.id, :postal_code, :prefecture_id,
+    params.require(:delivery_record).permit(:user_id, :product_id, :postal_code, :prefecture_id,
                                             :city, :banchi, :building_name, :tel)
   end
 
