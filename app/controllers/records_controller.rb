@@ -10,8 +10,9 @@ class RecordsController < ApplicationController
     @delivery_record = DeliveryRecord.new(record_params)
     if @delivery_record.valid?
       pay_item
+      binding.pry
       @delivery_record.save
-      return redirect_to action: :index
+      return redirect_to root_path
     else
       render 'index'
     end
@@ -31,8 +32,8 @@ class RecordsController < ApplicationController
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # 自身のPAY.JPテスト秘密鍵を記述しましょう
     Payjp::Charge.create(
-      amount: order_params[:price],  # 商品の値段
-      card: order_params[:token],    # カードトークン
+      amount: @product[:price],  # 商品の値段
+      card: record_params[:token],    # カードトークン
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
   end
