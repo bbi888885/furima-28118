@@ -11,10 +11,10 @@ class DeliveryRecord
     validates :token
   end
 
-  validates :prefecture_id, numericality: { other_than: 0 }
+  validates :prefecture_id, numericality: { other_than: 0 , message: 'can not be blank'}
   validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
   validates :tel, format: { with: /\A[0-9]+\z/},
-                  length: { maximum: 12 }
+                  length: { maximum: 11 }
 
   def save
     # ユーザーの情報を保存
