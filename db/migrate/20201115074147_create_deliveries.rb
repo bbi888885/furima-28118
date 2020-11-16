@@ -7,7 +7,6 @@ class CreateDeliveries < ActiveRecord::Migration[6.0]
       t.string :banchi,         default: "",  null: false
       t.string :building_name,  default: ""
       t.string :tel,                          null: false
-      t.references :record,                   null: false,  foreign_key: true
       t.timestamps
     end
   end
