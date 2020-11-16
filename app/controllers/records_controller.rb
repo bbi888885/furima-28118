@@ -3,7 +3,7 @@ class RecordsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    redirect_to root_path unless current_user.id != @product.user_id
+    redirect_to roor_path unless current_user.id != @product.user_id
     @delivery_record = DeliveryRecord.new 
   end
 
@@ -21,8 +21,9 @@ class RecordsController < ApplicationController
   private
 
   def record_params
-    params.require(:delivery_record).permit(:user_id, :product_id, :postal_code, :prefecture_id,
-                                            :city, :banchi, :building_name, :tel).merge(token: params[:token])
+    params.require(:delivery_record).permit(:token, :postal_code, :prefecture_id, :city, :banchi,
+                                            :building_name, :tel).merge(user_id: current_user.id, 
+                                                                        product_id: params[:product_id])
   end
 
   def set_product
