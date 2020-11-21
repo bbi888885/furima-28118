@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :user
+  has_one :record
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :delivery_cost
@@ -8,7 +9,7 @@ class Product < ApplicationRecord
   belongs_to :how_many_day
   belongs_to :status
 
-  with_options numericality: { other_than: 1, message: 'can not be blank' } do
+  with_options numericality: { other_than: 0, message: 'can not be blank' } do
     validates :category_id
     validates :status_id
     validates :delivery_cost_id
