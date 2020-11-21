@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_params, only: [:edit, :show, :destroy]
+  before_action :find_params, only: [:edit, :show, :destroy, :update]
   before_action :authenticate_user!, except: [:index, :show, :update]
 
   def index
@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-   
+
   end
 
   def new
@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
 
   def edit
     unless current_user.id == @product.user_id
-      redirect_to action: :index
+      redirect_to action: :index 
     end
   end
 
@@ -46,7 +46,6 @@ class ProductsController < ApplicationController
     end
   end
 
-
   private
 
   def product_params
@@ -57,6 +56,5 @@ class ProductsController < ApplicationController
   def find_params
     @product = Product.find(params[:id])
   end
-
 
 end
