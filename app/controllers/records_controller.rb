@@ -3,7 +3,7 @@ class RecordsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    redirect_to roor_path unless current_user.id != @product.user_id
+    redirect_to root_path unless current_user.id != @product.user_id
     @delivery_record = DeliveryRecord.new 
   end
 

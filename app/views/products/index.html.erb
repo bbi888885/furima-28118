@@ -153,19 +153,24 @@
           <li class='list'>
             <%= link_to product_path(product.id) do %>
             <div class='item-img-content'>
+              <%# ①商品画像 %>
               <%= image_tag product.image, class: "item-img" %>
-
+              <%# ②「sold out」表示 %>
               <%# 商品が売れていればsold outを表示しましょう %>
-              <%# /div class='sold-out'>
-                <span>Sold Out!!</span>
+              <div class='sold-out'>
+                <% if product.present? %>
+                  <span>Sold Out!!</span>
+                <% end %>
               </div>
               <%# //商品が売れていればsold outを表示しましょう %>
 
             </div>
+            <%# ③商品名 %>
             <div class='item-info'>
               <h3 class='item-name'>
                 <%= product.item %>
               </h3>
+              <%# ④商品の値段 %>
               <div class='item-price'>
                 <span><%= product.price %>円<br><%= product.delivery_cost.name %></span>
                 <div class='star-btn'>

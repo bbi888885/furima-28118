@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    
+   
   end
 
   def new
@@ -57,5 +57,6 @@ class ProductsController < ApplicationController
   def find_params
     @product = Product.find(params[:id])
   end
+
 
 end
