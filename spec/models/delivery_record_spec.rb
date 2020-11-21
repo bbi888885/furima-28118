@@ -9,6 +9,10 @@ RSpec.describe DeliveryRecord, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@delivery_record).to be_valid
       end
+      it 'building_nameは空でも保存できること' do
+        @delivery_record.building_name = nil
+        expect(@delivery_record).to be_valid
+      end
     end
 
     context "登録できないとき" do 
@@ -41,10 +45,6 @@ RSpec.describe DeliveryRecord, type: :model do
         @delivery_record.banchi = nil
         @delivery_record.valid?
         expect(@delivery_record.errors.full_messages).to include("Banchi can't be blank")
-      end
-      it 'building_nameは空でも保存できること' do
-        @delivery_record.building_name = nil
-        expect(@delivery_record).to be_valid
       end
       it 'teliが空だと保存できないこと' do
         @delivery_record.tel = nil
