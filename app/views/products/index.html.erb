@@ -158,7 +158,7 @@
               <%# ②「sold out」表示 %>
               <%# 商品が売れていればsold outを表示しましょう %>
               <div class='sold-out'>
-                <% if product.present? %>
+                <% if product.record.nil? %>
                   <span>Sold Out!!</span>
                 <% end %>
               </div>
