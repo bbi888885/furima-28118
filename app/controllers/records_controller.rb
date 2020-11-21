@@ -4,6 +4,7 @@ class RecordsController < ApplicationController
 
   def index
     redirect_to root_path unless current_user.id != @product.user_id
+    redirect_to root_path if @product.record.present? && @product.id == @product.record.product_id
     @delivery_record = DeliveryRecord.new 
   end
 
