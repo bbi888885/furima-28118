@@ -86,8 +86,8 @@
 
   <div class="comment-box">
     <% if current_user %>
-      <%= form_with(model:[@product, @comment], class: "message-form") do |form| %>
-        <%= form.text_area :text, class: "comment-text" %>
+      <%= form_with model: [@product, @comment], class: "message-form", local: true do |form| %>
+        <%= form.text_field :text, class: 'comment-text', placeholder: 'コメントを入力してください。' %>
         <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>
@@ -95,12 +95,26 @@
         </p>
         <div class="comment-flag">
         </div>
-        <%= form.submit "コメントする", class: "comment-btn" %>
+        <%= form.submit 'コメントする', class: 'comment-btn' %>
       <% end %>
     <% else %>
-      <p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p>
+      <p>※※※ コメントの投稿には<%= link_to '新規登録', new_user_registration_path, class: "sign-up, sign-up-font" %>/<%= link_to 'ログイン', new_user_session_path, class: "login, sign-up-font"  %>が必要です ※※※</p>
     <% end %>
-    
+  <div class="comment-list">
+    <% if current_user %>
+      <div id='comments'>
+        <p>コメント一覧</p>
+        <% if @comments %>
+          <% @comments.each do |t| %>
+            <div class="comment-user"><%= t.user.nickname %></div>
+            <div class="comment-date"><%= t.created_at %></div>
+            <div class="comment-text"><%= t.text %></div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
   </div>
   <div class="links">
     <a href="#" class="change-item-btn">

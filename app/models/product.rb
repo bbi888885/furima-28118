@@ -8,7 +8,7 @@ class Product < ApplicationRecord
   belongs_to :shipping_area
   belongs_to :how_many_day
   belongs_to :status
-  has_many   :comments
+  has_many   :comments, dependent: :destroy
 
   with_options numericality: { other_than: 0, message: 'can not be blank' } do
     validates :category_id
