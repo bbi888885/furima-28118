@@ -1,0 +1,20 @@
+li {
+  list-style: none;
+  float:left;
+  text-align: center;
+  
+}
+
+.item-img-content{
+margin-left: 10px;
+
+}
+
+.item-contents {
+  background-color: #FFF;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10vh 0;
+}

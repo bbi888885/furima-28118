@@ -1,5 +1,5 @@
 <%= render "shared/header" %>
-<div class="search-product">
+<div class="item-contents ">
   <% @products.each do |product|%>
           <li class='list'>
               <%= link_to product_path(product.id) do %>
@@ -20,10 +20,6 @@
                 <h3 class='item-name'>
                   <%= product.item %>
                 </h3>
-                <%# ④商品の値段 %>
-                <div class='item-price'>
-                  <span><%= product.price %>円<br><%= product.delivery_cost.name %></span>
-                </div>
               </div>
               <% end %>
           </li>
