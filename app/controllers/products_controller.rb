@@ -46,6 +46,13 @@ class ProductsController < ApplicationController
     end
   end
 
+<<<<<<< Updated upstream
+=======
+  def search
+    @products = Product.search(params[:keyword])
+  end
+
+>>>>>>> Stashed changes
   private
 
   def product_params
