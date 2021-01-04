@@ -1,10 +1,9 @@
 class CommentsController < ApplicationController
   def create
-    comment = Comment.new(comment_params)
+    @product = Product.find(params[:product_id])
+    comment = Comment.create(comment_params)
     if comment.save
-      ActionCable.server.broadcast 'comment_channel', content: @comment
-    else
-      flash.now[:alert] = 'コメントを入力してください。'
+      redirect_to product_path(@product)
     end
   end
 

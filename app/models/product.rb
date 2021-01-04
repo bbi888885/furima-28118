@@ -33,4 +33,12 @@ class Product < ApplicationRecord
     validates :shipping_area
     validates :how_many_day
   end
+
+  def self.search(search)
+    if search
+      Product.where(['content LIKE ?', "%#{search}%"])
+    else
+      Product.all
+    end
+  end
 end

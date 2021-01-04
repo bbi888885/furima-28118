@@ -86,8 +86,8 @@
 
   <div class="comment-box">
     <% if current_user %>
-      <%= form_with model: [@product, @comment], class: "message-form", local: true do |form| %>
-        <%= form.text_field :text, class: 'comment-text', placeholder: 'コメントを入力してください。' %>
+      <%= form_with(model: [@product, @comment], class: "message-form", local: true) do |form| %>
+        <%= form.text_area :text, class: 'comment-text', placeholder: 'コメントを入力してください。', row: "2" %>
         <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>
@@ -98,7 +98,7 @@
         <%= form.submit 'コメントする', class: 'comment-btn' %>
       <% end %>
     <% else %>
-      <p>※※※ コメントの投稿には<%= link_to '新規登録', new_user_registration_path, class: "sign-up, sign-up-font" %>/<%= link_to 'ログイン', new_user_session_path, class: "login, sign-up-font"  %>が必要です ※※※</p>
+      <p><strong>※※※ コメントの投稿には<%= link_to '新規登録', new_user_registration_path, class: "sign-up, sign-up-font" %>/<%= link_to 'ログイン', new_user_session_path, class: "login, sign-up-font"  %>が必要です ※※※</strong></p>
     <% end %>
   <div class="comment-list">
     <% if current_user %>
@@ -106,9 +106,17 @@
         <p>コメント一覧</p>
         <% if @comments %>
           <% @comments.each do |t| %>
-            <div class="comment-user"><%= t.user.nickname %></div>
-            <div class="comment-date"><%= t.created_at %></div>
-            <div class="comment-text"><%= t.text %></div>
+            <div class="balloon5">
+              <div class="faceicon">
+                <%= t.user.nickname %>
+              </div>
+              <div class="chatting">
+                <div class="says">
+                  <p><%= t.text %></p>
+                  <p class="comment-date"><%= t.created_at %></p>
+                </div>
+              </div>
+            </div>
           <% end %>
         <% end %>
       </div>

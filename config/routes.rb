@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   resources :users
   resources :products do
     resources :records, only: [:index, :new, :create] 
-    resources :comments, only: [:create, :new]
+    resources :comments, only: :create
+    collection do
+      get 'search'
+    end
   end
 
   
