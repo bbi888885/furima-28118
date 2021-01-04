@@ -1,13 +1,14 @@
 class ProductsController < ApplicationController
   before_action :find_params, only: [:edit, :show, :destroy, :update]
-  before_action :authenticate_user!, except: [:index, :show, :update]
+  before_action :authenticate_user!, except: [:index, :show, :update, :search]
 
   def index
     @products = Product.order('created_at DESC')
   end
 
   def show
-
+    @comment = Comment.new
+    @comments = @product.comments.order('created_at DESC')
   end
 
   def new
@@ -42,8 +43,12 @@ class ProductsController < ApplicationController
       @product.destroy
       redirect_to root_path
     else
-      redirect_to root_path
+      redirect_to root_patha
     end
+  end
+
+  def search
+    @products = Product.search(params[:search])
   end
 
   private
@@ -56,5 +61,7 @@ class ProductsController < ApplicationController
   def find_params
     @product = Product.find(params[:id])
   end
+
+  
 
 end

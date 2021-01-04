@@ -42,6 +42,7 @@ Things you may want to cover:
 
 - has_many :records
 - has_many :products
+- has_many :comments
 
 ## records テーブル
 
@@ -76,7 +77,8 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_one :record
+- has_one    :record
+- has_many   :comments
 
 ## deliverys テーブル
 
@@ -93,3 +95,16 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :record
+
+## comments テーブル
+
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| text           | text       | null: false                    |
+| user_id        | integer    | null: false                    |
+| product_id     | integer    | null: false                    |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item

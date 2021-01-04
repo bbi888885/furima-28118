@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   belongs_to :shipping_area
   belongs_to :how_many_day
   belongs_to :status
+  has_many   :comments, dependent: :destroy
 
   with_options numericality: { other_than: 0, message: 'can not be blank' } do
     validates :category_id
@@ -31,5 +32,13 @@ class Product < ApplicationRecord
     validates :delivery_cost
     validates :shipping_area
     validates :how_many_day
+  end
+
+  def self.search(search)
+    if search
+      Product.where(['content LIKE ?', "%#{search}%"])
+    else
+      Product.all
+    end
   end
 end
