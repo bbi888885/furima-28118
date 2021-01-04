@@ -1,3 +1,4 @@
+
 FactoryBot.define do
   factory :product do
     item                 { 'パステルカラーのタートルネック' }
@@ -7,7 +8,7 @@ FactoryBot.define do
     price                { 345_454 }
     delivery_cost_id     { 3 }
     shipping_area_id     { 3 }
-    how_many_days_id     { 3 }
+    how_many_day_id      { 3 }
 
     association :user
 
