@@ -32,12 +32,9 @@ class Product < ApplicationRecord
     validates :shipping_area
     validates :how_many_day
   end
-<<<<<<< Updated upstream
-=======
 
   def self.search(search)
     return Product.all unless search
     Product.where(['item LIKE ?', "%#{search}%"])
   end
->>>>>>> Stashed changes
 end
